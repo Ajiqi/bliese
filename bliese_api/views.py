@@ -2,14 +2,17 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import viewsets
+from rest_framework.authentication import TokenAuthentication
 
 from bliese_api import serializers
+from bliese_api import models
+from bliese_api import permissions
 
 
 class HelloApiView(APIView):
 	"""Test API View"""
 	serializer_class = serializers.HelloSerializer
-	
+
 	def get(self, request, format=None):
 		"""Returns a list of APIView features"""
 		an_apiview = [
@@ -31,7 +34,7 @@ class HelloApiView(APIView):
 			return Response({'message': message})
 		else:
 			return Response(
-				serializer.errors, 
+				serializer.errors,
 				status=status.HTTP_400_BAD_REQUEST
 			)
 
@@ -70,7 +73,7 @@ class HelloViewSet(viewsets.ViewSet):
 			name = serializer.validated_data.get('name')
 			message = f'Hello {name}!'
 			return Response({'message': message})
-		else: 
+		else:
 			return Response(
 				serializer.errors,
 				status=status.HTTP_400_BAD_REQUEST
@@ -91,3 +94,10 @@ class HelloViewSet(viewsets.ViewSet):
 	def destroy(self, request, pk=None):
 		"""Handle removing an object"""
 		return Response({'http_method': 'DELETE'})
+
+class UserProfileViewSet(viewsets.ModelViewSet):
+	"""Handle creating and updating profiles"""
+	serializer_class = serializers.UserProfileSerializer
+	queryset = models.UserProfile.objects.all()
+	authentication_classes = (TokenAuthentication,)
+	permission_classes = (permissions.UpdateOwnProfile,)
