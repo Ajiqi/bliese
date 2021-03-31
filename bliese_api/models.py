@@ -54,3 +54,8 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
 	def __str__(self):
 		"""Return string representation of our user"""
 		return self.email
+
+class Product(models.Model):
+	item_name = models.CharField(max_length=255, default="", unique=True)
+	price = models.IntegerField(null=False, default=0)
+	quantity = models.IntegerField(null=False, default=0)

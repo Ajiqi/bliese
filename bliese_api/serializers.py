@@ -32,3 +32,9 @@ class UserProfileSerializer(serializers.ModelSerializer):
 		)
 
 		return user
+
+
+class ProductSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = models.Product
+		fields = ('id', 'item_name', 'price', 'quantity')
