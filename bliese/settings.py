@@ -25,7 +25,7 @@ SECRET_KEY = 'b&$a+qk0lzd4&+)mz1)&!tk@xkj*wdvy82^&8!1=5r9$vg(n6*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['bliese.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
