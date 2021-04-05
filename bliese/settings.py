@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'b&$a+qk0lzd4&+)mz1)&!tk@xkj*wdvy82^&8!1=5r9$vg(n6*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['bliese.herokuapp.com', '127.0.0.1']
 

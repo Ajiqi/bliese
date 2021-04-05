@@ -56,6 +56,8 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
 		return self.email
 
 class Product(models.Model):
+	cat_id = model.IntegerField()
 	item_name = models.CharField(max_length=255, default="", unique=True)
+	item_description = models.CharField(max_length=255, default="")
 	price = models.IntegerField(null=False, default=0)
 	quantity = models.IntegerField(null=False, default=0)
